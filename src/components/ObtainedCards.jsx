@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { Cards } from './Cards';

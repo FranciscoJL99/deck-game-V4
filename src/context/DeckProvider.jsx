@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useReducer } from 'react';
 import { DeckContext } from './DeckContext';
 import { deckReducer } from './deckReducer';
@@ -8,7 +7,6 @@ const INITIAL_STATE = {
 	playerTwo: '',
 	deck: {
 		success: false,
-		// eslint-disable-next-line camelcase
 		deck_id: '',
 		shuffled: false,
 		remaining: 0,

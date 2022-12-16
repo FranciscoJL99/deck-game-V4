@@ -1,7 +1,6 @@
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 
-// eslint-disable-next-line react/prop-types
 export const Cards = ({ cardRef, enableDelete, onClick = () => undefined }) => {
 	return (
 		<>

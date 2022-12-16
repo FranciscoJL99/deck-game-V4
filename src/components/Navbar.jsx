@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { makeStyles } from '@material-ui/core';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';

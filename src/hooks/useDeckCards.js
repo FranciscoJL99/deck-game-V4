@@ -35,8 +35,7 @@ const useDeckCards = () => {
 			cards: cards.slice(10),
 		});
 	}
-	// cuando recibe las 2 cartas nueva las anade a cada jugador,
-	// espera 1 segundo y correo la funcion checkmano
+
 	const setCards = (cards) => {
 		setDeckPlayerOne((player) => ({
 			...player,
@@ -53,7 +52,6 @@ const useDeckCards = () => {
 			setDeckPlayerTwo(checkHand);
 		}, 1000)
 	}
-	//obtiene los codigos para operar, agrupa por numero y pinta
 	const checkWinner = () => {
 		const p1Codes = deckPlayerOne.cards.map(({ code }) => code)
 		const p2Codes = deckPlayerOne.cards.map(({ code }) => code)
@@ -70,7 +68,7 @@ const useDeckCards = () => {
 		}, {}));
 
 		const p1NLengths = p1N.every(([, values]) => values.length === 3 || values.length === 4);
-		//validacion de requisitos
+
 		if (p1N.length === 3 && p1NLengths) {
 			setDeckPlayerOne((player) => ({ ...player, winner: true }))
 			return;
@@ -131,25 +129,24 @@ const useDeckCards = () => {
 				..._values.map((_val) => isNum ? `${_key}${_val}` : `${_val}${_key}`)
 			], [])
 	}
-	//valida si hay cartas, si hay mas debe revisar con cual quedarse
+
 	const checkHand = ({ cards, ...player }) => {
 		if (cards.length > 10) {
-			//cntruye array con codifos
+
 			const codes = cards.map((card) => card.code)
-			//busca si hay carta repetida
+
 			const repeated = codes
 				.findIndex((code, i, _this) => (_this.findIndex((_code) => _code === code) !== i));
-			//si hay repetida la descarta
-			if (repeated !== -1) {
+
+				if (repeated !== -1) {
 				return {
 					...player,
 					cards: cards.filter((_, i) => i !== repeated),
 				}
 			}
-			//indexa, agrupa las cartas una por numero, la otrade 150 por pintas
+
 			const sortedByNumber = keyBy(codes, true)
 			const sortedByPint = keyBy(codes, false);
-			//contruye un objeto, intera entre cada una.
 			const [{ code: deletionCode }] = codes
 				.reduce((acc, code) => {
 					const numIndex = sortedByNumber.findIndex((_code) => _code === code);
